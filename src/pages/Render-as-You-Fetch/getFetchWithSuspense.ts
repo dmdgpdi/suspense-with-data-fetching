@@ -1,8 +1,9 @@
-const cache: any = {};
-
 type WrappedPromise<T> = {
   read: () => T;
 };
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const cache: { [key: string]: any } = {};
 
 const wrapPromise = <T>(promise: Promise<T>): WrappedPromise<T> => {
   let status = 'pending';
@@ -16,7 +17,7 @@ const wrapPromise = <T>(promise: Promise<T>): WrappedPromise<T> => {
     (err) => {
       status = 'error';
       response = err;
-    },
+    }
   );
 
   const read = () => {
@@ -41,7 +42,7 @@ const getFetchWithSuspense = <T>(url: string): WrappedPromise<T> => {
           throw new Error('Network response was not ok');
         }
         return response.json();
-      }),
+      })
     );
   }
 
