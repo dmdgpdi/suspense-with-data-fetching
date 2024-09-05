@@ -7,6 +7,7 @@ import {
   CatProfileWithLoaderAndUseHook,
   getCatProfile,
 } from '../pages/Render-as-You-Fetch/DataFetchingWithLoaderAndUse';
+import { CatProfileWithUseSuspenseQuery } from '../pages/Render-as-You-Fetch/UseSuspenseQuery';
 import ErrorPage from '../pages/ErrorPage';
 
 export const router = createBrowserRouter([
@@ -31,5 +32,9 @@ export const router = createBrowserRouter([
     loader: getCatProfile,
     element: <CatProfileWithLoaderAndUseHook />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: '/useSuspenseQuery',
+    element: <CatProfileWithUseSuspenseQuery />,
   },
 ]);

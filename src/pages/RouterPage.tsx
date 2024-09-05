@@ -19,6 +19,10 @@ export default function RouterPage() {
     navigate('/reactRouterDomLoaderAndUseHook');
   };
 
+  const moveUseSuspenseQuery = () => {
+    navigate('/useSuspenseQuery');
+  };
+
   return (
     <section>
       <h1>hi im router pageS</h1>
@@ -38,6 +42,7 @@ export default function RouterPage() {
         <button onClick={moveLoaderAndUse}>
           move react router dom loader and use for data fetching
         </button>
+        <button onClick={moveUseSuspenseQuery}>move use suspense Query</button>
       </div>
     </section>
   );
