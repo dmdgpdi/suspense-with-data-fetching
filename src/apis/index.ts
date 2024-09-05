@@ -3,3 +3,4 @@ const getCatInfoUrl = (id: number) =>
   `https://meowfacts.herokuapp.com/?id=${id}&lang=kor-ko`;
 
 export { getCatInfoUrl, getCatDateUrl };
+export { use } from './use';

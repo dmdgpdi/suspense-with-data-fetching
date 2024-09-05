@@ -1,9 +1,10 @@
 import { Suspense } from 'react';
 import { getFetchWithSuspense } from './getFetchWithSuspense';
-import { getCatDateUrl, getCatInfoUrl } from '../../apis';
-import type { CatDataType, CatInfoType } from '../../types';
+import { getCatDateUrl, getCatInfoUrl, use } from '../../apis';
+import type { CatInfoType } from '../../types';
+import { useLoaderData } from 'react-router-dom';
 
-export function CatProfileWithBasicSuspense() {
+export function CatProfileWithLoaderAndUseHook() {
   console.time('로딩 시간');
   return (
     <Suspense fallback={<h1>Cat profile loading</h1>}>
@@ -15,14 +16,20 @@ export function CatProfileWithBasicSuspense() {
   );
 }
 
+export const getCatProfile = () => {
+  return use(fetch(getCatDateUrl));
+};
+
 function CatProfile() {
-  const cat = getFetchWithSuspense<CatDataType[]>(getCatDateUrl).read()[0];
+  const cat = useLoaderData();
+
+  console.log('cat', cat);
 
   return (
     <div>
       <h1>CAT Profile</h1>
-      <p>{cat.id}</p>
-      <img src={cat.url} alt='' width={200} height={200} />
+      {/* <p>{cat.id}</p>
+      <img src={cat.url} alt='' width={200} height={200} /> */}
     </div>
   );
 }

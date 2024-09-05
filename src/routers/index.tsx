@@ -3,6 +3,11 @@ import RouterPage from '../pages/RouterPage';
 import { CatProfile } from '../pages/Fetch-on-Render/UseEffectForDataFetch';
 import { CatProfile as CatProfileTanstackQuery } from '../pages/Fetch-on-Render/UseTanstackQuery';
 import { CatProfileWithBasicSuspense } from '../pages/Render-as-You-Fetch/SuspenseDataFetching';
+import {
+  CatProfileWithLoaderAndUseHook,
+  getCatProfile,
+} from '../pages/Render-as-You-Fetch/DataFetchingWithLoaderAndUse';
+import ErrorPage from '../pages/ErrorPage';
 
 export const router = createBrowserRouter([
   {
@@ -20,5 +25,11 @@ export const router = createBrowserRouter([
   {
     path: '/basicSuspense',
     element: <CatProfileWithBasicSuspense />,
+  },
+  {
+    path: '/reactRouterDomLoaderAndUseHook',
+    loader: getCatProfile,
+    element: <CatProfileWithLoaderAndUseHook />,
+    errorElement: <ErrorPage />,
   },
 ]);
